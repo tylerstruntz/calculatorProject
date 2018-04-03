@@ -9,7 +9,7 @@
 
 
 //this is a new comment
-
+// comment boi
 #include <iostream>
 #include <cstdlib>
 
@@ -30,7 +30,7 @@ int main()
     std::cout << "Welcome to the calcultor\nFollow the menu to use it!\n\n\n";
 
 
-    
+
     do{
         std::cout << "-----------------------\n";
         std::cout << "-    (1) Add          -\n";
@@ -45,7 +45,7 @@ int main()
         std::cout << "\n- Please enter choice -\n";
         std::cin >> choice;
 
-        
+
     switch (choice)
     {
         case 1:
@@ -54,54 +54,54 @@ int main()
             std::cin >> num2;
             addNumbers(num1, num2);
             break;
-            
+
         case 2:
             std::cout << "(2) Subtraction. Enter number 1 then 2" << std::endl;
             std::cin >> num1;
             std::cin >> num2;
             subtractNumbers(num1, num2);
             break;
-            
+
         case 3:
             std::cout << "(3) Multiplication. Enter number 1 then 2" << std::endl;
             std::cin >> num1;
             std::cin >> num2;
             multiplyNumbers(num1, num2);
             break;
-            
+
         case 4:
             std::cout << "(4) Division. Enter number 1 then 2" << std::endl;
             std::cin >> num1;
             std::cin >> num2;
             divideNumbers(num1, num2);
             break;
-            
+
         case 5:
             std::cout << "(5) Modulous. Enter number 1 then 2" << std::endl;
             std::cin >> num1;
             std::cin >> num2;
             modulousNumbers(num1, num2);
             break;
-            
+
         case 6:
             std::cout << "(6) Prime. Enter number" << std::endl;
             std::cin >> num1;
             //isPrime(num1);
             break;
-            
+
         case 7:
             std::cout << "(7) Odd or Even. Enter number" << std::endl;
             std::cin >> num1;
             //isEven(num1);
             break;
-            
+
         case 8:
             std::cout << "(8) Quit." << std::endl;
             return 0;
             break;
     }
   }while(choice);
-    
+
 }
 
 
