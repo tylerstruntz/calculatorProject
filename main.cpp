@@ -13,13 +13,14 @@
 #include <iostream>
 #include <cstdlib>
 
-void addNumbers(int a, int b);
-void subtractNumbers(int a, int b);
-void divideNumbers(int a, int b);
-void multiplyNumbers(int a, int b);
-void modulousNumbers(int a, int b);
-//bool isPrime(int a);
-//bool isEven(int a);
+void Menu();
+void addNumbers();
+void subtractNumbers();
+void divideNumbers();
+void multiplyNumbers();
+void modulousNumbers();
+void isPrime();
+void oddOrEven();
 
 
 int main()
@@ -59,20 +60,23 @@ int main()
             break;
 
         case 6:
-            //isPrime(num1);
+            isPrime();
             break;
 
         case 7:
-            //isEven(num1);
+            oddOrEven();
             break;
 
         case 8:
             std::cout << "(8) Quit." << std::endl;
-            return 0;
+            break;
+
+        default:
+            std::cout << "Invalid choice! Please re-enter." << std::endl;
             break;
     }
-  }while(choice);
-
+  }while(choice != 8);
+  return 0;
 }
 
 void Menu()
@@ -92,77 +96,96 @@ void Menu()
 
 void addNumbers()
 {
+    int num1, num2, c;
     std::cout << "(1) Addition. Enter numer 1 then 2" << std::endl;
     std::cin >> num1;
     std::cin >> num2;
-    int c = a + b;
+    c = num1 + num2;
     std::cout << c << std::endl;
 }
 
 void subtractNumbers()
 {
+    int num1, num2, c;
     std::cout << "(2) Subtraction. Enter number 1 then 2" << std::endl;
     std::cin >> num1;
     std::cin >> num2;
-    int c = a - b;
+    c = num1 - num2;
     std::cout << c << std::endl;
 }
 
 void multiplyNumbers()
 {
+    int num1, num2, c;
     std::cout << "(3) Multiplication. Enter number 1 then 2" << std::endl;
     std::cin >> num1;
     std::cin >> num2;
-    int c = a * b;
+    c = num1 * num2;
     std::cout << c << std::endl;
 }
 
 void divideNumbers()
 {
+    int num1, num2, c;
     std::cout << "(4) Division. Enter number 1 then 2" << std::endl;
     std::cin >> num1;
     std::cin >> num2;
-    int c = a / b;
+    c = num1 / num2;
     std::cout << c << std::endl;
 }
 
 void modulousNumbers()
 {
+    int num1, num2, c;
     std::cout << "(5) Modulous. Enter number 1 then 2" << std::endl;
     std::cin >> num1;
     std::cin >> num2;
-    int c = a % b;
+    c = num1 % num2;
     std::cout << c << std::endl;
 }
 
-//bool isPrime(int a)
-//{
-//    std::cout << "(6) Prime. Enter number" << std::endl;
-//    std::cin >> num1;
-//    bool prime = false;
-//        if (a <= 1)
-//        {
-//            prime = true;
-//            std::cout << a << " is prime" << std::endl;
-//        }
-//    for (int i = 2; i < a/2; i++)
-//    {
-//        int c = a/2;
-//        if(a == 0)
-//        {
-//            prime = true;
-//            std::cout << a << " is prime" << std::endl;
-//        }
-//        else
-//        {
-//            std::cout << "number is not prime" << std::endl;
-//        }
-//    }
-//
-//}
+void isPrime()
+{
+    int num1;
+    std::cout << "(6) Prime. Enter number" << std::endl;
+    std::cin >> num1;
+    bool isPrime = true;
+        if (num1 <= 1)
+        {
+            std::cout << num1 << " is not prime." << std::endl;
+            return;
+        }
+    for (int i = 2; i < num1/2; i++)
+    {
+        int c = num1%i;
+        if(c == 0)
+        {
+            isPrime = false;
+        }
+    }
+    if (isPrime)
+    {
+      std::cout << num1 << " is prime" << std::endl;
+    }
+    else
+    {
+      std::cout << num1 << " is not prime" << std::endl;
+    }
 
-//bool isEven(int a)
-//{
-//  std::cout << "(7) Odd or Even. Enter number" << std::endl;
-//  std::cin >> num1;
-//}
+}
+
+void oddOrEven()
+{
+  int num1, c;
+  std::cout << "(7) Odd or Even. Enter number" << std::endl;
+  std::cin >> num1;
+  c = num1 % 2;
+  if (c == 0)
+  {
+    std::cout << num1 << " is even." << std::endl;
+  }
+  else
+  {
+    std::cout << num1 << " is odd." << std::endl;
+  }
+}
