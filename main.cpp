@@ -8,37 +8,59 @@
 //the return of the function. the program will run until the user
 //decides to quit.
 //
-// void menu()
-// menu will display what option the user can choose from.
+// void Menu()
+// brief: menu will display what options the user can choose from.
+// pre: none
+// post: none
 //
-// addnumbers()
-// pre: valid integer. error checking will be applied.
-// post: return the addition of the two valid numbers then re display the Menu
+// addNumbers()
+// brief: get 2 inputs, check if they are numbers, then add the two numbers and print result
+// pre: none
+// post: none
 //
-// subtractnumbers()
-// pre: valid integers are entered. error checking will be applied.
-// post: return the Subtraction of the two valid numbers then re display the Menu
+// subtractNumbers()
+// brief: get 2 inputs, check if they are numbers, then subtracr the two numbers and print result
+// pre: none
+// post: none
 //
-// dividenumbers()
-// pre: valid integers are entered. error checking will be applied.
-// post: return the Division of the two valid numbers then re display the Menu
+// divideNumbers()
+// brief: get 2 inputs, check if they are numbers, then divide the two numbers and print result
+// pre: none
+// post: none
 //
-// multiplynumbers()
-// pre: valid integers are entered. error checking will be applied.
-// post: return the Multiplication of the two valid numbers then re display the Menu
+// multiplyNumbers()
+// brief: get 2 inputs, check if they are numbers, then multiply the two numbers and print result
+// pre: none
+// post: none
 //
 // modulousNumbers()
-// pre: valid integers are entered. error checking will be applied.
-// post: return the modulous of the two valid numbers then re display the Menu
+// brief: get 2 inputs, check if they are integers, then perform num1 mod num2 and print result
+// pre: none
+// post: none
 //
 // isPrime()
-// pre: valid integer is entered. error checking will be applied.
-// post: returns a boolean value if the number is prime
+// brief: get an input, check if it is an int, then check if the number is prime and print result
+// pre: none
+// post: none
 //
 // oddOrEven()
-// pre: valid integer is entered. error checking will be applied.
-// post: returns a boolean value if the number is odd or Even
+// brief: get an input, check if the number is even or odd, and print result
+// pre: none
+// post: none
 //
+// validateNumber()
+// brief: checks if there was an error in inputting a number. If there was, it clears cin,
+//        ignores the inputted text, and returns false. If there was no error, return true
+// pre: an std::cin was called before the function is declared
+// post: a boolean determining if input was valid
+//
+// validateInt()
+// brief: checks if there was an error in inputting a number. If there was, it clears cin,
+//        ignores the inputted text, and returns false. If there was no error, initialize another int
+//        variable and set it equal to the number passed. Check if those two are equal. If they are,
+//        return true, if not, return false
+// pre: an std::cin was called before the function is declared
+// post: a boolean determining if input was valid
 #include <iostream>
 #include <cstdlib>
 
@@ -50,31 +72,25 @@ void multiplyNumbers();
 void modulousNumbers();
 void isPrime();
 void oddOrEven();
+bool validateNumber();
+bool validateInt(double);
 
 
 int main()
 {
     int choice;
-    int num1;
-    int num2;
     std::cout << "Welcome to the calcultor\nFollow the menu to use it!\n\n\n";
 
-
-
     do{
-        Menu();
+      Menu();
+      std::cin >> choice;
+      while(!validateInt(choice))
+      {
         std::cin >> choice;
+      }
 
-        //checking if input is in range
-        if(choice > 8 || choice < 1)
-        {
-          std::cout << "Choice not recognized\n";
-          std::cin >> choice;
-        }
-
-
-    switch (choice)
-    {
+      switch (choice)
+      {
         case 1:
             addNumbers();
             break;
@@ -132,25 +148,18 @@ void Menu()
 
 void addNumbers()
 {
-    int num1, num2, c;
+    double num1, num2, c;
     std::cout << "(1) Addition. Enter numer 1 then 2" << std::endl;
-    std::cin >> num1;
 
-    //checking if input is an integer. if not clear input
-    //ask user to re enter the input
-    if(!(std::cin >> num1))
+    std::cin >> num1;
+    while(!validateNumber())
     {
-      std::cin.clear();
-      std::cin.ignore();
-      std::cout << "please re enter number" << std::endl;
       std::cin >> num1;
     }
+
     std::cin >> num2;
-    if(!(std::cin >> num2))
+    while(!validateNumber())
     {
-      std::cin.clear();
-      std::cin.ignore();
-      std::cout << "please re enter number" << std::endl;
       std::cin >> num2;
     }
     c = num1 + num2;
@@ -159,122 +168,112 @@ void addNumbers()
 
 void subtractNumbers()
 {
-    int num1, num2, c;
+    double num1, num2, c;
     std::cout << "(2) Subtraction. Enter number 1 then 2" << std::endl;
+
     std::cin >> num1;
-    if(!(std::cin >> num1))
+    while(!validateNumber())
     {
-      std::cin.clear();
-      std::cin.ignore();
-      std::cout << "please re enter number" << std::endl;
       std::cin >> num1;
     }
+
     std::cin >> num2;
-    if(!(std::cin >> num2))
+    while(!validateNumber())
     {
-      std::cin.clear();
-      std::cin.ignore();
-      std::cout << "please re enter number" << std::endl;
       std::cin >> num2;
     }
+
     c = num1 - num2;
     std::cout << c << std::endl;
 }
 
 void multiplyNumbers()
 {
-    int num1, num2, c;
+    double num1, num2, c;
     std::cout << "(3) Multiplication. Enter number 1 then 2" << std::endl;
+
     std::cin >> num1;
-    if(!(std::cin >> num1))
+    while(!validateNumber())
     {
-      std::cin.clear();
-      std::cin.ignore();
-      std::cout << "please re enter number" << std::endl;
       std::cin >> num1;
     }
+
     std::cin >> num2;
-    if(!(std::cin >> num2))
+    while(!validateNumber())
     {
-      std::cin.clear();
-      std::cin.ignore();
-      std::cout << "please re enter number" << std::endl;
       std::cin >> num2;
     }
+
     c = num1 * num2;
     std::cout << c << std::endl;
 }
 
 void divideNumbers()
 {
-    int num1, num2, c;
+    double num1, num2, c;
     std::cout << "(4) Division. Enter number 1 then 2" << std::endl;
+
     std::cin >> num1;
-    if(!(std::cin >> num1))
+    while(!validateNumber())
     {
-      std::cin.clear();
-      std::cin.ignore();
-      std::cout << "please re enter number" << std::endl;
       std::cin >> num1;
     }
+
     std::cin >> num2;
-    if(!(std::cin >> num2))
+    while(!validateNumber())
     {
-      std::cin.clear();
-      std::cin.ignore();
-      std::cout << "please re enter number" << std::endl;
       std::cin >> num2;
     }
+
     c = num1 / num2;
     std::cout << c << std::endl;
 }
 
 void modulousNumbers()
 {
-    int num1, num2, c;
+    double numA, numB;
+    int c;
     std::cout << "(5) Modulous. Enter number 1 then 2" << std::endl;
-    std::cin >> num1;
-    if(!(std::cin >> num1))
+
+    std::cin >> numA;
+    while(!validateInt(numA))
     {
-      std::cin.clear();
-      std::cin.ignore();
-      std::cout << "please re enter number" << std::endl;
-      std::cin >> num1;
+      std::cin >> numA;
     }
-    std::cin >> num2;
-    if(!(std::cin >> num2))
+    int num1 = numA;
+
+    std::cin >> numB;
+    while(!validateInt(numB))
     {
-      std::cin.clear();
-      std::cin.ignore();
-      std::cout << "please re enter number" << std::endl;
-      std::cin >> num2;
+      std::cin >> numB;
     }
+    int num2 = numB;
+
     c = num1 % num2;
     std::cout << c << std::endl;
 }
 
 void isPrime()
 {
-    int num1;
-    std::cout << "(6) Prime. Enter number" << std::endl;
-    std::cin >> num1;
-    if(!(std::cin >> num1))
-    {
-      std::cin.clear();
-      std::cin.ignore();
-      std::cout << "please re enter number" << std::endl;
-      std::cin >> num1;
-    }
+    double numA;
     bool isPrime = true;
+    std::cout << "(6) Prime. Enter number" << std::endl;
 
-        //base case
-        if (num1 <= 1)
-        {
-            std::cout << num1 << " is not prime." << std::endl;
-            return;
-        }
-    //loop to see if modulous input becomes 0
-    //if it does set prime to false else set to true
+    std::cin >> numA;
+    while(!validateInt(numA))
+    {
+      std::cin >> numA;
+    }
+    int num1 = numA;
+
+    if (num1 <= 1) //base case
+    {
+        std::cout << num1 << " is not prime." << std::endl;
+        return;
+    }
+
+    //loop to see if input modulous i becomes 0
+    //if it does set isPrime to false
     for (int i = 2; i < num1/2; i++)
     {
         int c = num1%i;
@@ -296,19 +295,21 @@ void isPrime()
 
 void oddOrEven()
 {
-  int num1, c;
+  double numA;
+  int c;
   std::cout << "(7) Odd or Even. Enter number" << std::endl;
-  std::cin >> num1;
-  if(!(std::cin >> num1))
+
+  std::cin >> numA;
+  while(!validateInt(numA))
   {
-    std::cin.clear();
-    std::cin.ignore();
-    std::cout << "please re enter number" << std::endl;
-    std::cin >> num1;
+    std::cin >> numA;
   }
+  int num1 = numA;
+
   c = num1 % 2;
 
-  //check if mod of input is 0 then input even
+  //check if input mod 2 is 0, if it is, there is no remainder
+  //and the number is even. Else, odd
   if (c == 0)
   {
     std::cout << num1 << " is even." << std::endl;
@@ -317,4 +318,36 @@ void oddOrEven()
   {
     std::cout << num1 << " is odd." << std::endl;
   }
+}
+
+bool validateNumber()
+{
+  //validate that the input is a number
+  if(std::cin.fail())
+  {
+    std::cout << "please re enter number" << std::endl;
+    std::cin.clear();
+    std::cin.ignore(256,'\n');
+    return false;
+  }
+  return true;
+}
+
+bool validateInt(double num)
+{
+  //validate that the input is an int
+  int check = num;
+  if(std::cin.fail())
+  {
+    std::cout << "please re enter number" << std::endl;
+    std::cin.clear();
+    std::cin.ignore(256,'\n');
+    return false;
+  }
+  else if(check != num)
+  {
+    std::cout << "please re enter number (needs to be an integer)" << std::endl;
+    return false;
+  }
+  return true;
 }
